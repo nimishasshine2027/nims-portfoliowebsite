@@ -36,6 +36,70 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 0, 110, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(131, 56, 236, 0.15) 0%, transparent 50%);
+  animation: float 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 60% 40%, rgba(255, 190, 11, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 10% 80%, rgba(6, 255, 165, 0.1) 0%, transparent 50%);
+  animation: float-reverse 25s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes float {
+  0%, 100% { 
+    background-position: 0% 50%, 100% 50%, 50% 0%;
+    transform: translate(0, 0);
+  }
+  25% { 
+    transform: translate(50px, -50px);
+  }
+  50% { 
+    background-position: 100% 50%, 0% 50%, 50% 100%;
+    transform: translate(-50px, 50px);
+  }
+  75% { 
+    transform: translate(30px, 30px);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% { 
+    transform: translate(0, 0);
+  }
+  25% { 
+    transform: translate(-50px, 50px);
+  }
+  50% { 
+    transform: translate(50px, -50px);
+  }
+  75% { 
+    transform: translate(-30px, -30px);
+  }
 }
 
 @keyframes gradientShift {
@@ -71,6 +135,105 @@ header {
 @keyframes slideDown {
   from { transform: translateY(-100%); }
   to { transform: translateY(0); }
+}
+
+/* FLOATING ORBS */
+.floating-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.6;
+  animation: float-orb 10s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--neon-pink), transparent);
+  top: 10%;
+  left: 5%;
+  animation: float-orb-1 15s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--neon-cyan), transparent);
+  top: 50%;
+  right: 5%;
+  animation: float-orb-2 18s ease-in-out infinite;
+}
+
+.orb-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, var(--neon-purple), transparent);
+  bottom: 10%;
+  left: 20%;
+  animation: float-orb-3 20s ease-in-out infinite;
+}
+
+.orb-4 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, var(--neon-yellow), transparent);
+  top: 30%;
+  left: 50%;
+  animation: float-orb-4 16s ease-in-out infinite;
+}
+
+.orb-5 {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--neon-green), transparent);
+  bottom: 20%;
+  right: 15%;
+  animation: float-orb-5 17s ease-in-out infinite;
+}
+
+@keyframes float-orb-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -40px) scale(1.1); }
+  50% { transform: translate(-20px, 50px) scale(0.9); }
+  75% { transform: translate(40px, 20px) scale(1.05); }
+}
+
+@keyframes float-orb-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-40px, 30px) scale(0.95); }
+  50% { transform: translate(50px, -40px) scale(1.1); }
+  75% { transform: translate(-30px, -20px) scale(1); }
+}
+
+@keyframes float-orb-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(50px, 40px) scale(1.05); }
+  50% { transform: translate(-40px, -30px) scale(0.95); }
+  75% { transform: translate(20px, -50px) scale(1.1); }
+}
+
+@keyframes float-orb-4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-50px, -30px) scale(0.9); }
+  50% { transform: translate(40px, 40px) scale(1.1); }
+  75% { transform: translate(-30px, 30px) scale(1); }
+}
+
+@keyframes float-orb-5 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(40px, -50px) scale(1.1); }
+  50% { transform: translate(-50px, 30px) scale(0.95); }
+  75% { transform: translate(30px, -20px) scale(1.05); }
 }
 
 .nav-container {
@@ -130,6 +293,8 @@ nav a:hover::before {
 /* MAIN CONTENT */
 main {
   margin-top: 80px;
+  position: relative;
+  z-index: 10;
 }
 
 section {
@@ -737,6 +902,14 @@ footer {
 </head>
 
 <body>
+
+<div class="floating-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+  <div class="orb orb-5"></div>
+</div>
 
 <header>
   <div class="nav-container">
