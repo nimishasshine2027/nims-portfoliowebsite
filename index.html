@@ -333,6 +333,28 @@ section {
   z-index: 1;
 }
 
+.card-label {
+  display: inline-block;
+  background: var(--neon-pink);
+  color: #000;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tech-stack {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--neon-yellow);
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
 /* STATS SECTION */
 .stats {
   display: grid;
@@ -455,6 +477,175 @@ footer {
   animation: slideUp 0.8s ease;
 }
 
+/* ABOUT SECTION */
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.about-text {
+  animation: fadeInUp 0.8s ease;
+}
+
+.about-text p {
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.skill-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid var(--neon-cyan);
+}
+
+.skill-tag:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 217, 255, 0.3);
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+  animation: expandHeight 0.8s ease;
+}
+
+@keyframes expandHeight {
+  from { height: 0; }
+  to { height: 100%; }
+}
+
+.timeline-item {
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  animation: fadeInUp 0.8s ease;
+}
+
+.timeline-item:nth-child(even) {
+  direction: rtl;
+}
+
+.timeline-item:nth-child(even) > div {
+  direction: ltr;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: var(--neon-pink);
+  border: 3px solid var(--dark-bg);
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  box-shadow: 0 0 20px var(--neon-pink);
+}
+
+.timeline-content {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(131, 56, 236, 0.1), rgba(0, 217, 255, 0.1));
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  border-color: var(--neon-cyan);
+  background: linear-gradient(135deg, rgba(131, 56, 236, 0.15), rgba(0, 217, 255, 0.15));
+  box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+}
+
+.timeline-content h3 {
+  color: var(--neon-cyan);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-date {
+  color: var(--neon-yellow);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+}
+
+/* TESTIMONIALS */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.testimonial-card {
+  background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(131, 56, 236, 0.1));
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)) 1;
+  padding: 2rem;
+  border-radius: 12px;
+  transition: all 0.4s ease;
+  animation: fadeInUp 0.8s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
+}
+
+.testimonial-stars {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.testimonial-card p {
+  color: rgba(255, 255, 255, 0.85);
+  font-style: italic;
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.testimonial-author {
+  color: var(--neon-pink);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
 @keyframes slideUp {
   from { transform: translateY(50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
@@ -516,8 +707,30 @@ footer {
     text-align: center;
   }
 
-  .grid, .features, .stats {
+  .grid, .features, .stats, .testimonials-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline::before {
+    left: 0;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    direction: ltr !important;
+  }
+
+  .timeline-item > div {
+    direction: ltr !important;
+  }
+
+  .timeline-marker {
+    left: 0;
+    transform: translateX(-50%);
   }
 }
 </style>
@@ -539,12 +752,12 @@ footer {
 <main>
   <!-- HERO SECTION -->
   <section class="hero">
-    <span class="hero-label">Welcome to Fresh Design</span>
-    <h1>Creative <span class="highlight">Design Studio</span> for Modern Brands</h1>
-    <p>Bold typography, vibrant colors, and smooth animations that bring your vision to life</p>
+    <span class="hero-label">Full-Stack Developer & Designer</span>
+    <h1>Nimisha S Shine<br><span class="highlight">Creative Tech Solutions</span></h1>
+    <p>Building responsive web applications, modern UIs, and innovative digital experiences. Specializing in frontend development, UI/UX design, and full-stack architecture.</p>
     <div class="cta-buttons">
-      <button class="btn btn-primary">Start Project</button>
-      <button class="btn btn-secondary">Learn More</button>
+      <button class="btn btn-primary">View My Work</button>
+      <button class="btn btn-secondary">Get in Touch</button>
     </div>
   </section>
 
@@ -552,68 +765,151 @@ footer {
   <section>
     <div class="stats">
       <div class="stat-item">
-        <div class="stat-number">150+</div>
+        <div class="stat-number">20+</div>
         <div class="stat-label">Projects Completed</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">98%</div>
+        <div class="stat-number">100%</div>
         <div class="stat-label">Client Satisfaction</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">45</div>
-        <div class="stat-label">Team Members</div>
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Years Experience</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">12</div>
-        <div class="stat-label">Years Experience</div>
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Tech Stack Skills</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-container">
+      <div class="about-text">
+        <p>I'm a passionate developer and designer with a focus on creating beautiful, functional digital products. With expertise in modern web technologies and a keen eye for design, I help businesses and creators bring their visions to life through code and creativity.</p>
+        <p>My journey in tech started with a curiosity about how things work, which evolved into a passion for building scalable solutions and delightful user experiences. I believe in writing clean, maintainable code and designing interfaces that users love.</p>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">HTML/CSS</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">UI/UX Design</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Python</span>
       </div>
     </div>
   </section>
 
   <!-- WORK SECTION -->
   <section id="work">
-    <h2 class="section-title">Featured Work</h2>
+    <h2 class="section-title">Featured Projects</h2>
     <div class="grid">
       <div class="card">
-        <h3>🎨 Branding</h3>
-        <p>Complete brand identity design with vibrant color schemes and modern typography that resonates with your audience.</p>
+        <div class="card-label">Full Stack</div>
+        <h3>🎨 Smart Interior Design App</h3>
+        <p>React-based interior design visualization tool with real-time collaboration. Features include 3D room preview, color palette matching, and client presentation export. Integrated with REST APIs for seamless data sync.</p>
+        <div class="tech-stack">React • Node.js • MongoDB</div>
       </div>
       <div class="card">
-        <h3>🌐 Web Design</h3>
-        <p>Responsive, animated websites that engage users and convert visitors into customers with modern interactions.</p>
+        <div class="card-label">Backend</div>
+        <h3>🌐 Networking Communication Tool</h3>
+        <p>Java-based UDP socket programming project for real-time data transmission. Implements reliable packet delivery, error handling, and multi-client support with comprehensive logging.</p>
+        <div class="tech-stack">Java • UDP • Socket Programming</div>
       </div>
       <div class="card">
-        <h3>📱 App Design</h3>
-        <p>Intuitive mobile and web app interfaces with smooth animations and beautiful visual hierarchy.</p>
+        <div class="card-label">Frontend</div>
+        <h3>📱 Animated Portfolio System</h3>
+        <p>Modern, responsive portfolio website with smooth animations, gradient effects, and interactive components. Fully responsive across devices with accessibility features and performance optimization.</p>
+        <div class="tech-stack">HTML • CSS • JavaScript</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE TIMELINE -->
+  <section id="experience">
+    <h2 class="section-title">Experience & Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>Full-Stack Developer</h3>
+          <p class="timeline-date">2023 - Present</p>
+          <p>Building responsive web applications and leading frontend architecture. Mentoring junior developers and implementing best practices in code quality and performance optimization.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>Frontend Developer Intern</h3>
+          <p class="timeline-date">2022 - 2023</p>
+          <p>Developed interactive user interfaces using React and modern CSS. Collaborated with designers to implement pixel-perfect designs and improve user experience metrics.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>Bachelor of Engineering (IT)</h3>
+          <p class="timeline-date">2020 - 2024</p>
+          <p>AJCE - Studied software development, data structures, web technologies, and system design. Completed multiple projects in full-stack development and networking.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SERVICES SECTION -->
   <section id="services">
-    <h2 class="section-title">What We Do</h2>
+    <h2 class="section-title">My Expertise</h2>
     <div class="features">
       <div class="feature-box">
-        <div class="feature-icon">⚡</div>
-        <h3>Fast & Responsive</h3>
-        <p>Lightning-fast load times and fully responsive designs that work perfectly on all devices.</p>
+        <div class="feature-icon">💻</div>
+        <h3>Frontend Development</h3>
+        <p>Expert in React, vanilla JavaScript, and modern CSS. I create responsive, accessible, and performant user interfaces that users love.</p>
       </div>
       <div class="feature-box">
-        <div class="feature-icon">🎯</div>
-        <h3>Goal Focused</h3>
-        <p>Every design decision serves your business goals and improves user engagement metrics.</p>
+        <div class="feature-icon">🎨</div>
+        <h3>UI/UX Design</h3>
+        <p>Design thinking and user-centered approach to create beautiful, intuitive interfaces. Proficient in Figma and design systems.</p>
       </div>
       <div class="feature-box">
-        <div class="feature-icon">✨</div>
-        <h3>Modern & Fresh</h3>
-        <p>Contemporary design trends combined with timeless principles for lasting impact.</p>
+        <div class="feature-icon">⚙️</div>
+        <h3>Full-Stack Solutions</h3>
+        <p>End-to-end development from concept to deployment. Node.js backend, database design, and API development for scalable applications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <h2 class="section-title">What People Say</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p>"Nimisha delivered an exceptional website that exceeded our expectations. Professional, creative, and incredibly responsive to feedback."</p>
+        <div class="testimonial-author">- Design Studio Client</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p>"Amazing attention to detail and understanding of user experience. The app is intuitive, beautiful, and performs flawlessly."</p>
+        <div class="testimonial-author">- Tech Startup Founder</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p>"A talented developer who brings both technical expertise and creative thinking. Highly recommend for any project!"</p>
+        <div class="testimonial-author">- Project Manager</div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT SECTION -->
   <section id="contact">
-    <h2 class="section-title">Get In Touch</h2>
+    <h2 class="section-title">Let's Connect</h2>
+    <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: rgba(255,255,255,0.8);">Have a project in mind? Let's collaborate and create something amazing together.</p>
     <form class="contact-form" id="contactForm">
       <div class="form-group">
         <input type="text" placeholder="Your Name" required>
@@ -622,7 +918,10 @@ footer {
         <input type="email" placeholder="Your Email" required>
       </div>
       <div class="form-group">
-        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <input type="text" placeholder="Project Title" required>
+      </div>
+      <div class="form-group">
+        <textarea placeholder="Tell me about your project..." rows="5" required></textarea>
       </div>
       <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
     </form>
@@ -631,13 +930,16 @@ footer {
 
 <footer>
   <div class="footer-content">
-    <p>&copy; 2026 Nimisha S Shine. All rights reserved.</p>
+    <p><strong>Nimisha S Shine</strong></p>
+    <p>Full-Stack Developer | UI/UX Designer | Creative Problem Solver</p>
+    <p style="margin: 1rem 0;">📧 nimishasshine2027@cs.ajce.in | 💼 <a href="https://github.com/nimishasshine2027" style="color: var(--neon-cyan); text-decoration: none;">GitHub</a> | 🔗 <a href="https://github.com/nimishasshine2027/nims-portfoliowebsite" style="color: var(--neon-cyan); text-decoration: none;">Portfolio</a></p>
     <div class="social-links">
+      <a href="#github">GitHub</a>
+      <a href="#linkedin">LinkedIn</a>
       <a href="#twitter">Twitter</a>
-      <a href="#instagram">Instagram</a>
-      <a href="#behance">Behance</a>
-      <a href="#dribbble">Dribbble</a>
+      <a href="#email">Email</a>
     </div>
+    <p style="margin-top: 2rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">&copy; 2026 Nimisha S Shine. All rights reserved.</p>
   </div>
 </footer>
 
